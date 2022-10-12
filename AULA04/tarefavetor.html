@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        let frutas = [];
+        let novaFrutas = [];
+        let frutaRemover = prompt("Digite a fruta a excluir");
+        console.log("Fruta excluir:" + frutaRemover);
+        for (letindFruta = 0; indFruta < frutas.length; indFruta++) {
+            console.log("Fruta: " + frutas[indFruta].toString());
+
+            if (frutas[indFruta] != frutaRemover) {
+                novaFrutas.push(frutas[indFruta]);
+            }
+        }
+        alert(novaFrutas);
+        /*
+    </script>
+    <script>
+        /*
+        Atividade:
+        Perguntar ao usuário qual fruta deseja excluir
+        Ao excluir a fruta, exibir os valores do vetor com a fruta excluída
+
+        let frutas = ["banana","maçã","abacate","abacaxi"];
+        let nrFrutaRemover = prompt("Qual fruta quer remover (número)? "+frutas.join([separador = ',']));
+        frutas.splice(parseInt(nrFrutaRemover)-1, 1);
+        alert("Frutas restantes: "+frutas.join([separador = ',']));
+
+        Digitar as frutas armazenar na variavel
+        quer continuar armazenar?
+        se não para! mostra quais frutas armazenou
+        escolher qual fruta quer excluir
+        */
+
+        let frutas = [];
+        let novaFrutas = [];
+        let continuarGravar;
+        let frutaInserir;
+        do {
+            frutaInserir = prompt("Qual fruta você quer gravar?");
+            if(frutas.includes(frutaInserir)){
+                frutaInserir = prompt("Essa fruta já foi incluída. Qual fruta você quer gravar?");
+                frutas.push(frutaInserir);
+            }else{
+                frutas.push(frutaInserir);
+            }
+
+            continuarGravar = prompt("Você quer continuar a gravar? (s | n)");
+            if (continuarGravar == "n") {
+                alert("Frutas armazenadas: " + frutas.join([separador = ',']));
+                let qualFrutaExcluir = prompt("Qual fruta quer excluir?");
+
+                for (let indFruta = 0; indFruta < frutas.length; indFruta++) {
+                    console.log("Fruta: " + frutas[indFruta].toString());
+
+                    if (frutas[indFruta] != qualFrutaExcluir) {
+                        novaFrutas.push(frutas[indFruta]);
+                    }
+                }
+            }
+        } while (continuarGravar == "s")
+        alert(novaFrutas);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
