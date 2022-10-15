@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="checkbox" name="chkLinguagem" value="linguagem 1">Linguagem 1</input>
+        <input type="checkbox" name="chkLinguagem" value="linguagem 2">Linguagem 2</input>
+        <input type="checkbox" name="chkLinguagem" value="linguagem 3">Linguagem 3</input><br/>
+        <input type="button" value="Ver Itens Marcados" onclick="getElements()">
+        <div id="idLinguagem"></div>
+    </form>
+</body>
+<script>
+    function getElements(){
+        let selecionados = [];
+        let obj = document.getElementsByName("chkLinguagem");
+        console.log(obj);
+        for(let i=0;i<obj.length;i++)
+        {
+            console.log("Elemento marcado: " + obj[i].checked);
+            if(obj[i].checked){
+                selecionados.push(obj[i].value);
+            }
+        }
+        console.log("Item selecionados: " + selecionados);
+    }
+
+    const linguagens = ["javascript", "python", "c#"];
+    let resp = "";
+    do{
+        let linguagem = prompt("Digite a linguagem");
+        linguagens.push(linguagem);
+        resp = prompt("Deseja continuar?");
+    }while(resp == 's')
+
+    let xInput="";
+    let index = 0;
+    while(index < linguagens.length){
+        xInput = xInput + "<input type='checkbox' name='chk' value=" + linguagens[index] + ">" + linguagens[index] + "</input>";
+        index++;
+    }
+    xInput = xInput + "<input type='button' value='Ver Linguagens' onclick='getLinguagens()'>"
+    document.getElementById("idLinguagem").innerHTML = xInput;
+
+    function getLinguagens(){
+        let selecionados = [];
+        let obj = document.getElementsByName("chk");
+        console.log(obj);
+        for(let i=0;i<obj.length;i++)
+        {
+            console.log("Elemento marcado: " + obj[i].checked);
+            if(obj[i].checked){
+                selecionados.push(obj[i].value.toUpperCase());
+            }
+        }
+        alert("Item selecionados: " + selecionados);
+    }
+</script>
+</html>

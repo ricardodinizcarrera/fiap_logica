@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de COmpra</title>
+    <script>
+        //Vetores que foram preenchidos com os produtos e quantidades
+        //Vetores globais
+        var prod = [];
+        var qtde = [];
+    </script>
+</head>
+<body>
+    Produto:
+    <select name="cboProduto" id="cboProduto">
+        <option value="0">Selecionar Produto</option>
+        <option value="Produto 1">Produto 01</option>
+        <option value="Produto 2">Produto 02</option>
+        <option value="Produto 3">Produto 03</option>
+        <option value="Produto 4">Produto 04</option>
+        <option value="Produto 5">Produto 05</option>
+    </select>
+    <br/>
+    Quantidade: <input type="text" id="nrQtde">
+    <br/>
+    <input type="button" id="btnCarrinho" value="Adicionar Carrinho" onclick="add();">
+    <input type="button" id="btnVerCarrinho" value="Ver Carrinho" onclick="verCarrinho();">
+    <br/>
+    <div id="idListaCarrinho">Produtos Inseridos</div>
+</body>
+<script>
+    function add(){
+        let produtoSelecionado = document.getElementById("cboProduto").value;
+        let qtdePreenchido = document.getElementById("nrQtde").value;
+
+        /*if(produtoSelecionado==0 || qtdePreenchido=="" || isNaN(qtdePreenchido)){
+            alert("Preencha os dados corretamente!");
+        }*/
+        
+        if(produtoSelecionado==0){
+            alert("Selecione um produto válido");
+            return;
+        }
+        if(qtdePreenchido == '' || isNaN(qtdePreenchido)){
+            alert("Isso não é um número");
+            return;
+        }else{
+            if(prod.includes(produtoSelecionado)){
+                for(let i=0;i<prod.length;i++){
+                    if(prod[i] == produtoSelecionado){
+                        qtde[i] = parseInt(qtde[i]) + parseInt(qtdePreenchido);
+                    }
+                }
+            }else{
+                prod.push(produtoSelecionado);
+                qtde.push(qtdePreenchido);
+            }
+            verCarrinho();
+            iniciarValores();
+        }
+    }
+
+    function iniciarValores(){
+        document.getElementById("cboProduto").value = 0;
+        document.getElementById("nrQtde").value = "";
+    }
+
+    function verCarrinho(){
+        let produtosCarrinho="";
+        let tabelaCarrinho="<table border=1><tr><td>Produtos</td><td>Quantidade</td></tr>";
+        for(let i=0;i<prod.length;i++){
+            tabelaCarrinho += "<tr><td>" + prod[i] + "</td><td>" + qtde[i] + "</td></tr>";
+            //produtosCarrinho = produtosCarrinho + "Produto: " + prod[i] + " Quantidade: " + qtde[i] + "<br/>";
+        }
+        tabelaCarrinho += "</table>"
+        document.getElementById("idListaCarrinho").innerHTML = tabelaCarrinho;
+    }
+</script>
+</html>

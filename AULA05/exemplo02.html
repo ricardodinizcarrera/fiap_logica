@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="radio" name="rdoHeroi" value="Superman">Superman</input>
+        <input type="radio" name="rdoHeroi" value="Batman" checked>Batman</input>
+        <input type="radio" name="rdoHeroi" value="Coringa">Coringa</input><br/>
+        <input type="button" value="Ver Heroi Marcado" onclick="getElements()">
+    </form>
+</body>
+<script>
+    function getElements(){
+        let obj = document.getElementsByName("rdoHeroi");
+        console.log(obj);
+        for(let i=0;i<obj.length;i++)
+        {
+            if(obj[i].checked){
+                alert("O herói é: " + obj[i].value);
+                break;
+            }
+        }
+
+    }
+</script>
+</html>
