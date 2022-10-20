@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Calculadora{
+        constructor(pNum1, pNum2){
+            this._num1 = pNum1;
+            this._num2 = pNum2;
+        }
+
+        get num1(){
+            return this._num1;
+        }
+        set num1(valor){
+            this._num1 = valor;
+        }
+
+        get num2(){
+            return this._num2;
+        }e
+        set num2(valor){
+            this._num2 = valor;
+        }
+
+        somar(){
+            return this._num1 + this._num2;
+        }
+
+        sub(){
+            return this._num1 - this._num2;
+        }
+    }
+
+    const calc = new Calculadora();
+    calc.num1 = 10;
+    calc.num2 = 5;
+
+    alert(calc.somar());
+    alert(calc.sub());
+</script>
+</html>

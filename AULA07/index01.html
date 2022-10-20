@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="txtNr01">Número 1: </label>
+    <input type="text" id="txtNr01" size="10" /><br />
+    <label for="txtNr02">Número 2: </label>
+    <input type="text" id="txtNr02" size="10" /><br />
+    <button type="button" onclick="calcularMaior('txtNr01','txtNr02')">Mostrar Maior</button><br />
+    <div id="divResultado"></div>
+</body>
+<script>
+    function calcularMaior(pNum1, pNum2) {
+        const calcularMaiorPromisse = new Promise(function (myResolve, myReject) {
+            let nr1 = document.getElementById(pNum1).value;
+            let nr2 = document.getElementById(pNum2).value;
+            let resultado;
+
+            if (isNaN(nr1) || isNaN(nr2)) {
+                myReject('Digitar um número válido');
+            } else {
+                if (parseInt(nr1) > parseInt(nr2)) {
+                    console.log(`O número ${nr1} é maior do que ${nr2}`);
+                    resultado = `O número ${nr1} é maior do que ${nr2}`;
+                } else {
+                    console.log(`O número ${nr2} é maior do que ${nr1}`);
+                    resultado = `O número ${nr2} é maior do que ${nr1}`;
+                }
+                myResolve(resultado);
+            }
+        });
+
+        calcularMaiorPromisse
+            .then((data, error) => {
+                if (data)
+                    exibirResultadoPromisse(data);
+                else
+                    exibirResultadoPromisse(error);
+            });
+
+        /*calcularMaiorPromisse
+            .then(
+                function (value) { 
+                    exibirResultadoPromisse(value); 
+                },
+                function (error) { 
+                    exibirResultadoPromisse(error); 
+                }
+            )
+        */
+    }
+
+    function exibirResultadoPromisse(valor) {
+        document.getElementById('divResultado').innerHTML = valor;
+    }
+</script>
+
+</html>

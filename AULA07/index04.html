@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Pessoa {
+        constructor(pNome, pCpf) {
+            this.nome = pNome;
+            this.cpf = pCpf;
+        }
+    }
+
+    class Professor extends Pessoa {
+        constructor(pNome, pCpf, pCodigo, pMateria) {
+            super(pNome, pCpf);
+            this.codigo = pCodigo;
+            this.Materia = pMateria;
+        }
+
+        saudacao() {
+            let mensagem;
+            return mensagem = `Nome: ${this.nome} - Materia: ${this.materia}`
+        }
+    }
+
+    class Aluno extends Pessoa {
+        constructor(pNome, pCpf, pCodigo){
+            super(pNome, pCpf);
+            this.codigo = pCodigo;
+        }
+
+        saudacao() {
+            let mensagem;
+            return mensagem = `Nome: ${this.nome} - Código: ${this.codigo}`
+        }
+    }
+
+    const aluno1 = new Aluno();
+    aluno1.nome = "Nome do Aluno 1";
+    aluno1.cpf = "999.999.999-99";
+    aluno1.codigo = "RA 12345";
+    alert(aluno1.saudacao());
+
+    const prof1 = new Professor();
+    prof1.nome = "Nome do Professor 1";
+    prof1.cpf = "999.888.888-88";
+    prof1.codigo = "CODIGO X1";
+    prof1.Materia = 'Lógica de Programação';
+    alert(prof1.saudacao());
+</script>
+
+</html>
